@@ -1,0 +1,5 @@
+This error occurs when using Tailwind's `@apply` directive with a class that doesn't exist or is not included in your `tailwind.config.js` file's `content` array.  For example:
+```html
+<div class="@apply text-my-custom-class"></div>
+```
+If `text-my-custom-class` isn't defined, you will encounter a build error.  Another common issue is forgetting to purge unused CSS (if you're not using JIT mode) resulting in styles not applied and no error message indicating why.
