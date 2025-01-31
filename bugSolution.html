@@ -1,0 +1,29 @@
+To solve the `@apply` issue, ensure that `text-my-custom-class` is defined in your Tailwind configuration or in your CSS. To address purging, update your `tailwind.config.js`:
+```javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./index.html', './bug.html'], // Add paths to your HTML files
+  theme: {
+    extend: {
+      textColor: {
+        'my-custom-class': '#3b82f6',
+      }
+    }
+  },
+  plugins: [],
+}
+```
+This ensures that your `text-my-custom-class` is included. If using JIT mode (recommended), this issue is mitigated. For `bug.html`:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tailwind Bug</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="@apply text-my-custom-class"></div>
+</body>
+</html>
+```
+The corrected `bugSolution.html` will have the CSS class correctly defined and added to `tailwind.config.js` to fix the purging problem.
